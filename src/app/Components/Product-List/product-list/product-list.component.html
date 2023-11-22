@@ -1,0 +1,54 @@
+<div class="card my-5">
+    <div class="card-header">
+        Products
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-2">Filter by:</div>
+            <div class="col-md-2">
+                <input type="text" [(ngModel)]="filterlist">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2"> Filtered by : <h3> {{filterlist}}</h3>
+            </div>
+        </div>
+    </div>
+    <div class="table-responsive">
+        <table class="table" *ngIf="products.length; else elseBlock">
+            <thead>
+                <tr>
+                    <th><button class="btn btn-sm btn-primary " (click)="toggleImages()">{{showImages?'Hide':'Show'}}
+                            Images</button></th>
+                    <th>Product</th>
+                    <th>Code</th>
+                    <th>Availaible</th>
+                    <th>Price</th>
+                    <th>Ratings</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let product of products">
+                <tr>
+
+
+                    <td><img [src]="product.imageUrl" [style.width.px]="imageWidth" [style.margin.px]="imageMargin"
+                            *ngIf="showImages">
+                    </td>
+                    <td>{{product.prodcutName}}</td>
+                    <td>{{product.prodcutCode}}</td>
+                    <td>{{product.RelaeseDate}}</td>
+                    <td>{{product.prodcutPrice  | currency:'USD': 'symbol':'1.2-2'}} </td>
+                    <td>{{product.prodcutRating}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <ng-template #elseBlock>
+        <h4>No Prodcuts to Show</h4>
+    </ng-template>
+
+
+
+</div>
