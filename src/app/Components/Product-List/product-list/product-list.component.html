@@ -1,6 +1,7 @@
 <div class="card my-5">
     <div class="card-header">
-        Products
+        {{Title}}
+        <strong>{{ratings}}</strong>
     </div>
     <div class="card-body">
         <div class="row">
@@ -10,35 +11,36 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-2"> Filtered by : <h3> {{filterlist}}</h3>
-            </div>
+            <div class="col-md-2">
+                Filtered by : <strong>{{filterlist}}</strong> </div>
         </div>
     </div>
     <div class="table-responsive">
-        <table class="table" *ngIf="products.length; else elseBlock">
+        <table class="table">
             <thead>
                 <tr>
+                    <th>title</th>
+                    <th>description</th>
+                    <th>Category</th>
+                    <th>price</th>
+                    <th>rating</th>
                     <th><button class="btn btn-sm btn-primary " (click)="toggleImages()">{{showImages?'Hide':'Show'}}
                             Images</button></th>
-                    <th>Product</th>
-                    <th>Code</th>
-                    <th>Availaible</th>
-                    <th>Price</th>
-                    <th>Ratings</th>
                 </tr>
             </thead>
-            <tbody *ngFor="let product of products">
+            <tbody *ngFor="let product of filteredProducts">
                 <tr>
 
-
-                    <td><img [src]="product.imageUrl" [style.width.px]="imageWidth" [style.margin.px]="imageMargin"
+                    <td>{{product.title | truncateText: 10}}</td>
+                    <td>{{product.description| truncateText: 10}}</td>
+                    <td>{{product?.category}}</td>
+                    <td>{{product.price | currency:'USD': 'symbol':'1.2-2'}} </td>
+                    <td><app-star-comp [rating]="product.rating.rate"
+                            (ratingClicked)="onRatingClicked($event)"></app-star-comp></td>
+                    <td><img [src]="product.image" [style.width.px]="imageWidth" [style.margin.px]="imageMargin"
                             *ngIf="showImages">
                     </td>
-                    <td>{{product.prodcutName}}</td>
-                    <td>{{product.prodcutCode}}</td>
-                    <td>{{product.RelaeseDate}}</td>
-                    <td>{{product.prodcutPrice  | currency:'USD': 'symbol':'1.2-2'}} </td>
-                    <td>{{product.prodcutRating}}</td>
+
                 </tr>
             </tbody>
         </table>
@@ -46,7 +48,7 @@
     </div>
 
     <ng-template #elseBlock>
-        <h4>No Prodcuts to Show</h4>
+        <h4>No products to Show</h4>
     </ng-template>
 
 
