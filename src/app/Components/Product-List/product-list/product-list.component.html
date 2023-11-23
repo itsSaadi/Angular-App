@@ -1,53 +1,66 @@
-<div class="card my-5">
-    <div class="card-header">
-        {{Title}}
-        <strong>{{ratings}}</strong>
-    </div>
-    <div class="card-body">
-        <div class="row">
-            <div class="col-md-2">Filter by:</div>
-            <div class="col-md-2">
-                <input type="text" [(ngModel)]="filterlist">
+<div class="container">
+    <div class="card my-5">
+        <div class="card-header">
+            {{Title}}
+            <strong>{{ratings}}</strong>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-2">Search Product:</div>
+                <div class="col-md-2">
+                    <input type="text" [(ngModel)]="filterlist">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    Filtered by : <strong>{{filterlist}}</strong> </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-2">
-                Filtered by : <strong>{{filterlist}}</strong> </div>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Category</th>
+                        <th>Price</th>
+                        <th>Rating</th>
+                        <th><button class="btn btn-sm btn-primary "
+                                (click)="toggleImages()">{{showImages?'Hide':'Show'}}
+                                Images</button></th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let product of filteredProducts">
+                    <tr>
+
+                        <td>{{product.title | truncateText: 10}}</td>
+                        <td>{{product.description| truncateText: 10}}</td>
+                        <td>{{product?.category}}</td>
+                        <td>{{product.price | currency:'USD': 'symbol':'1.2-2'}} </td>
+                        <td><app-star-comp [rating]="product.rating.rate"
+                                (ratingClicked)="onRatingClicked($event)"></app-star-comp></td>
+                        <td><img [src]="product.image" [style.width.px]="imageWidth" [style.margin.px]="imageMargin"
+                                *ngIf="showImages">
+                        </td>
+                        <td>
+                            <div style="display: flex;justify-content: space-between;">
+                                <div>
+                                    <button [routerLink]="['/products',product.id]"
+                                        class="btn btn-sm btn-success">Details</button>
+                                </div>
+
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
         </div>
+
+        <ng-template #elseBlock>
+            <h4>No products to Show</h4>
+        </ng-template>
     </div>
-    <div class="table-responsive">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>title</th>
-                    <th>description</th>
-                    <th>Category</th>
-                    <th>price</th>
-                    <th>rating</th>
-                    <th><button class="btn btn-sm btn-primary " (click)="toggleImages()">{{showImages?'Hide':'Show'}}
-                            Images</button></th>
-                </tr>
-            </thead>
-            <tbody *ngFor="let product of filteredProducts">
-                <tr>
-
-                    <td>{{product.title | truncateText: 10}}</td>
-                    <td>{{product.description| truncateText: 10}}</td>
-                    <td>{{product?.category}}</td>
-                    <td>{{product.price | currency:'USD': 'symbol':'1.2-2'}} </td>
-                    <td><app-star-comp [rating]="product.rating.rate"
-                            (ratingClicked)="onRatingClicked($event)"></app-star-comp></td>
-                    <td><img [src]="product.image" [style.width.px]="imageWidth" [style.margin.px]="imageMargin"
-                            *ngIf="showImages">
-                    </td>
-
-                </tr>
-            </tbody>
-        </table>
-
-    </div>
-
-    <ng-template #elseBlock>
-        <h4>No products to Show</h4>
-    </ng-template>
 </div>
+<router-outlet></router-outlet>

@@ -5,7 +5,13 @@ import { ProductDetailsComponent } from './Components/product-details/product-de
 import { NotFoundComponent } from './Components/not-found/not-found.component';
 import { HomeCompComponent } from './Components/home-comp/home-comp.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {path:'welcome',component:HomeCompComponent},
+  {path:'products',component:ProductListComponent},
+  {path:'products/:id',component:ProductDetailsComponent},
+  {path:'',redirectTo:'welcome',pathMatch:'full'},
+  {path:'**',component:NotFoundComponent},
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
