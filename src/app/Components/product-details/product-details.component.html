@@ -1,1 +1,52 @@
-<p>product-details works!</p>
+<div class="container my-5">
+    <div class="card">
+        <div class="card-header">
+            <button class="btn btn-sm btn-primary">Product Details : <span
+                    class="my-2"><strong>{{ratings}}</strong></span></button>
+        </div>
+        <div style="display: flex;">
+            <div>
+                <div class='card-body'>
+                    <div class- row>
+                        <div class='col-md-8'>
+                            <div class='row '>
+                                <div class='col-md-4'>Name : </div>
+                                <div class='col-md-8'>{{product . title}}</div>
+                            </div>
+                            <div class=' row'>
+                                <div class='col-md-4'>Category :</div>
+                                <div class='col-md-8'>{{product.category | uppercase }}</div>
+                            </div>
+                            <div class='row'>
+                                <div class='col-md-4'>Description: </div>
+                                <div class='col-md-8'>{{product. description | truncateText: 160}} </div>
+                            </div>
+                            <div class='row'>
+                                <div class='col-md-4'>Ratings : </div>
+                                <div class='col-md-8'><app-star-comp [rating]="product.rating.rate"
+                                        (ratingClicked)="onRatingClicked($event)"></app-star-comp></div>
+                            </div>
+                            <div class='row'>
+                                <div class='col-md-4'>Price: </div>
+                                <div class='col-md-8'>{{product.price | currency :'USD' : 'symbol' :'1.2-2'}} </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="image">
+                                <img [src]="product.image" [style.width.px]="imageWidth"
+                                    [style.margin-left]="marginLeftValue" [style.margin-top]="marginTopValue">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div style="display: flex;justify-content: center;margin-left: 750px;">
+                        <div><button style="color: white;" class="btn btn-warning"><strong>Add to Cart</strong></button>
+                        </div>
+                        <div><button style="margin-left: 13px;" class="btn btn-danger"><strong>Buy Now</strong></button></div>
+                    </div>
+                    <button class="btn btn-success" (click)="onBack()"> <strong> <i class="fa-solid fa-circle-left"></i>
+                            Go Back</strong></button>
+
+                </div>
+            </div>
