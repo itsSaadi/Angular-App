@@ -7,9 +7,13 @@ import { ProductListComponent } from './Components/Product-List/product-list/pro
 import { StarCompComponent } from './Shared/star-comp/star-comp.component';
 import { HttpClientModule } from '@angular/common/http';
 import { TruncateTextPipe } from './Shared/star-comp/minimze-length';
+import { ProductDetailsComponent } from './Components/product-details/product-details.component';
+import { NotFoundComponent } from './Components/not-found/not-found.component';
+import { NavbarComponent } from './Components/navbar/navbar.component';
+import { HomeCompComponent } from './Components/home-comp/home-comp.component';
 
 @NgModule({
-  declarations: [AppComponent, ProductListComponent, StarCompComponent,TruncateTextPipe ],
+  declarations: [AppComponent, ProductListComponent, StarCompComponent,TruncateTextPipe, ProductDetailsComponent, NotFoundComponent, NavbarComponent, HomeCompComponent ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
