@@ -1,0 +1,45 @@
+.checkout-form {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.checkout-form .form-group {
+  position: relative;
+}
+
+.checkout-form .form-group input {
+  padding-right: 40px;
+}
+
+.checkout-form .form-group i {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  color: #999;
+}
+
+.container {
+  max-width: 350px;
+  
+  font-family: Georgia, serif;
+}
+.card-header {
+  background-color: white;
+}
+.price{
+    height: 28px;
+    color: #6432F9;
+    width: 82px;
+    border-radius: 10px;
+    background-color: #e5e5e5;
+    font-weight: bolder;
+    text-align: center;
+}
+.form-label{
+   color: #c7c7c7; 
+}
+
+html body{
+    background-color: black;
+}

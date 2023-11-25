@@ -1,0 +1,48 @@
+<div class="container my-5">
+
+    <div style="padding: 30px; border-radius: 30px;" class="card">
+
+        <div style="display: flex;justify-content: space-between; margin-top: 10px;">
+            <div> <h5><strong>Total amount</strong></h5> </div>
+            <div class="price" *ngIf="product">{{product.price | currency :'USD' : 'symbol'}}</div>
+        </div>
+        <form class="checkout-form my-5">
+            <div class="mb-3">
+                <label for="cardNumber" class="form-label">Card Number</label>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="cardNumber" placeholder="Card number">
+                    <i class="fa-brands fa-cc-visa"></i>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="expirationDate" class="form-label">Expiration Date</label>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="expirationDate" placeholder="MM/YY">
+                            <i class="far fa-calendar-alt"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="cvc" class="form-label">CVC</label>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="cvc" placeholder="CVC">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="display: flex; justify-content: space-around;">
+            <div> <button class="btn " (click)="goBack()">Cancel</button>
+            </div>
+            <div> <button style="background-color: #663BB7;color: white;font-weight: bold;" type="button"
+                    class="btn ">Pay Now</button>
+            </div>
+        </div>
+        </form>
+        <span>use billing address ? <a routerLink="/address">Add Address</a></span>
+    </div>
+
+</div>
