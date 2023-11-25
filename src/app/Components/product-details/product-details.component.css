@@ -1,3 +1,9 @@
 .image:hover {
   cursor: pointer;
 }
+.description{
+  max-width: 200px; /* Adjust as needed */
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}

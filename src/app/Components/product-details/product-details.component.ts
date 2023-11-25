@@ -8,9 +8,9 @@ import { ProductService } from 'src/app/servives/product.service';
   styleUrls: ['./product-details.component.css'],
 })
 export class ProductDetailsComponent implements OnInit {
-  marginLeftValue: string = '900px';
-  marginTopValue: string = '-200px';
-  imageWidth: number = 200;
+  marginLeftValue: string = '270px';
+  marginTopValue: string = '-180px';
+  imageWidth: number = 100;
   ratings: string = 'Click Start to See Ratings of this Product';
   constructor(
     private route: ActivatedRoute,

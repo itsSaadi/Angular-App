@@ -4,15 +4,12 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'truncateText'
 })
 export class TruncateTextPipe implements PipeTransform {
-  transform(value: string, maxLength: number = 100): string {
-    if (!value) return '';
-
-    // Check if the length of the value is greater than maxLength
-    if (value.length > maxLength) {
-      // Truncate the text and append '...' at the end
-      return value.substring(0, maxLength) + '...';
+  transform(value: string, limit = 100, completeWords = false, ellipsis = '...'): string {
+    if (completeWords) {
+      limit = value.substr(0, limit).lastIndexOf(' ');
     }
-
-    return value;
+    return value.length > limit ? value.substr(0, limit) + ellipsis : value;
   }
 }
+
+
