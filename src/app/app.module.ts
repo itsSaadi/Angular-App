@@ -11,9 +11,10 @@ import { ProductDetailsComponent } from './Components/product-details/product-de
 import { NotFoundComponent } from './Components/not-found/not-found.component';
 import { NavbarComponent } from './Components/navbar/navbar.component';
 import { HomeCompComponent } from './Components/home-comp/home-comp.component';
+import { PaymentComponent } from './Components/payment/payment.component';
 
 @NgModule({
-  declarations: [AppComponent, ProductListComponent, StarCompComponent,TruncateTextPipe, ProductDetailsComponent, NotFoundComponent, NavbarComponent, HomeCompComponent ],
+  declarations: [AppComponent, ProductListComponent, StarCompComponent,TruncateTextPipe, ProductDetailsComponent, NotFoundComponent, NavbarComponent, HomeCompComponent, PaymentComponent ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],

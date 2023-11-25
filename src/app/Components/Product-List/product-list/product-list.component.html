@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="card my-5">
+    <div style="height: 100%;width: 100%;" class="card my-5">
         <div class="card-header">
             {{Title}}
             <strong>{{ratings}}</strong>
@@ -46,8 +46,8 @@
                         <td>
                             <div style="display: flex;justify-content: space-between;">
                                 <div>
-                                    <button [routerLink]="['/products',product.id]"
-                                        class="btn btn-sm btn-success">Details</button>
+                                    <button [routerLink]="['/products',product.id]" class="btn  btn-success"> <strong><i
+                                                class="fa-solid fa-cart-plus"></i> Add to Cart</strong></button>
                                 </div>
 
                             </div>
